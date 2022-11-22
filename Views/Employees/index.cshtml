@@ -1,0 +1,40 @@
+@model IEnumerable<Sqli.Models.EmployeeModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Employees</title>
+    <link rel="stylesheet" type="text/css" href="https://hunter2labs.s3.amazonaws.com/common.css">
+    <script src='https://hunter2labs.s3.amazonaws.com/common.js'></script>
+  </head>
+  <body>
+    <form method="post" enctype="application/x-www-form-urlencoded">
+      <input type="search" name="searchTermFromUser" />
+      <button type="submit" name="btnOK">Search employees</button>
+    </form>
+    @if (Model != null)
+    {
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        @foreach (var employee in @Model)
+        {
+          <tr>
+            <td>@employee.Name</td>
+            <td>@employee.Email</td>
+            <td>@employee.Phone</td>
+          </tr>
+        }
+      </table>
+    }
+  </body>
+</html>
